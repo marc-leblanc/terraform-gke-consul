@@ -1,0 +1,33 @@
+global:
+  name: consul
+  enabled: true
+  datacenter: dc-gke
+  federation:
+    enabled: true
+    createFederationSecret: true
+  gossipEncryption:
+    autoGenerate: true
+  tls:
+    enabled: true
+    enableAutoEncrypt: true
+    verify: true
+  acls:
+    manageSystemACLs: true
+    createReplicationToken: true
+server:
+  replicas: 3
+  securityContext:
+    runAsNonRoot: false
+    runAsUser: 0
+connectInject:
+  enabled: true
+syncCatalog:
+  enabled: false
+controller:
+  enabled: true
+ui:
+  service:
+    type: 'LoadBalancer'
+meshGateway:
+  enabled: true
+  replicas: 1
