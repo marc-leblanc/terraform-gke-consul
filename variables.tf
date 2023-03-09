@@ -33,3 +33,9 @@ variable "consul_server_replicas" {
   default     = 3
 
 }
+
+variable "consul_manage_acls" {
+  type        = string
+  description = "Enable/disable system ACLS"
+  default     = "false"
+}
