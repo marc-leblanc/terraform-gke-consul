@@ -16,10 +16,12 @@ global:
     createReplicationToken: true
 server:
   replicas: ${replicas}
-  bootstrapExpect: 1
+  bootstrapExpect: ${replicas}
   securityContext:
     runAsNonRoot: false
     runAsUser: 0
+  acls:
+    manageSystemACLs:  ${manageSystemACLs}
 connectInject:
   enabled: true
 syncCatalog:
