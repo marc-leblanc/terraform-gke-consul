@@ -13,7 +13,7 @@ global:
     verify: true
   acls:
     manageSystemACLs: ${manageSystemACLs}
-    createReplicationToken: true
+    createReplicationToken:  ${manageSystemACLs}
 server:
   replicas: ${replicas}
   bootstrapExpect: ${replicas}
