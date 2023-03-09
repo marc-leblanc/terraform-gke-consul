@@ -15,8 +15,8 @@ global:
     manageSystemACLs: true
     createReplicationToken: true
 server:
-  replicas: 3
-  bootstrapExpect: 3
+  replicas: ${replicas}
+  bootstrapExpect: ${replicas}
   securityContext:
     runAsNonRoot: false
     runAsUser: 0

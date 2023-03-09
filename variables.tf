@@ -27,3 +27,9 @@ variable "meshgateway_toggle" {
   description = "Toggle Consul Mesh gateway on/off"
   default     = "false"
 }
+variable "consul_server_replicas" {
+  type        = string
+  description = "Consul server replica count. This will also be used for the Bootstrap exepect value."
+  default     = 3
+
+}

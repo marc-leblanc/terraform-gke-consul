@@ -15,6 +15,7 @@ resource "helm_release" "consul" {
       datacenter  = var.consul_dc_name
       federation  = var.federation_toggle
       meshgateway = var.meshgateway_toggle
+      replicas    = var.consul_server_replicas
     })
   ]
 }
