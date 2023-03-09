@@ -16,7 +16,7 @@ global:
     createReplicationToken: true
 server:
   replicas: ${replicas}
-  bootstrapExpect: ${replicas}
+  bootstrapExpect: 1
   securityContext:
     runAsNonRoot: false
     runAsUser: 0
