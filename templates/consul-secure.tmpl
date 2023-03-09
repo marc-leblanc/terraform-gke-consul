@@ -16,6 +16,7 @@ global:
     createReplicationToken: true
 server:
   replicas: 3
+  bootstrapExpect: 3
   securityContext:
     runAsNonRoot: false
     runAsUser: 0
