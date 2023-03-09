@@ -1,10 +1,10 @@
 global:
   name: consul
   enabled: true
-  datacenter: dc-gke
+  datacenter: ${datacenter}
   federation:
-    enabled: true
-    createFederationSecret: true
+    enabled: ${federation}
+    createFederationSecret: ${federation}
   gossipEncryption:
     autoGenerate: true
   tls:
@@ -29,5 +29,5 @@ ui:
   service:
     type: 'LoadBalancer'
 meshGateway:
-  enabled: true
+  enabled: ${meshgateway}
   replicas: 1
