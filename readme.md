@@ -1,3 +1,9 @@
+[![pre-commit](https://github.com/Arctiq-Terraform-Modules/terraform-consul-gke/actions/workflows/pre-commit-checks.yaml/badge.svg?branch=main)](https://github.com/Arctiq-Terraform-Modules/terraform-consul-gke/actions/workflows/pre-commit-checks.yaml)
+
+# Consul on GKE
+
+This module will set up a HashiCorp Consul cluster on an existing GKE cluster.
+
 ## Requirements
 
 | Name | Version |
