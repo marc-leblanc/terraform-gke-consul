@@ -39,3 +39,9 @@ variable "consul_manage_acls" {
   description = "Enable/disable system ACLS"
   default     = "false"
 }
+
+variable "grafana_enable" {
+  description = "Install Grafana"
+  type        = bool
+  default     = false
+}
