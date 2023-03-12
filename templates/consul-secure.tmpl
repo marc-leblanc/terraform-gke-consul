@@ -1,10 +1,10 @@
 global:
   name: consul
   enabled: true
-  datacenter: dc-gke
+  datacenter: ${datacenter}
   federation:
-    enabled: true
-    createFederationSecret: true
+    enabled: ${federation}
+    createFederationSecret: ${federation}
   gossipEncryption:
     autoGenerate: true
   tls:
@@ -12,13 +12,16 @@ global:
     enableAutoEncrypt: true
     verify: true
   acls:
-    manageSystemACLs: true
-    createReplicationToken: true
+    manageSystemACLs: ${manageSystemACLs}
+    createReplicationToken:  ${manageSystemACLs}
 server:
-  replicas: 3
+  replicas: ${replicas}
+  bootstrapExpect: ${replicas}
   securityContext:
     runAsNonRoot: false
     runAsUser: 0
+  acls:
+    manageSystemACLs:  ${manageSystemACLs}
 connectInject:
   enabled: true
 syncCatalog:
@@ -29,5 +32,5 @@ ui:
   service:
     type: 'LoadBalancer'
 meshGateway:
-  enabled: true
+  enabled: ${meshgateway}
   replicas: 1

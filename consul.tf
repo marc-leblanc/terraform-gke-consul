@@ -6,12 +6,17 @@ resource "kubernetes_namespace" "consul-namespace" {
 
 resource "helm_release" "consul" {
   name      = "consul"
-  namespace = kubernetes_namespace.consul-namespace.metadata.0.name
+  namespace = kubernetes_namespace.consul-namespace.metadata[0].name
 
   repository = "https://helm.releases.hashicorp.com"
   chart      = "consul"
   values = [
     templatefile("${path.module}/templates/consul-${var.consul_type}.tmpl", {
+      datacenter       = var.consul_dc_name
+      federation       = var.federation_toggle
+      meshgateway      = var.meshgateway_toggle
+      replicas         = var.consul_server_replicas
+      manageSystemACLs = var.consul_manage_acls
     })
   ]
 }
