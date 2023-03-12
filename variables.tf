@@ -7,3 +7,9 @@ variable "consul_type" {
   description = "Insecure/Secure"
   default     = "secure"
 }
+
+variable "grafana_enable" {
+  description = "Install Grafana"
+  type        = bool
+  default     = false
+}
