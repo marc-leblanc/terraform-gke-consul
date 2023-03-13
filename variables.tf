@@ -1,9 +1,3 @@
-variable "consul_namespace" {
-  description = "Namespace for consul deployment on GKE"
-  default     = "consul"
-  type        = string
-}
-
 variable "consul_type" {
   description = "Insecure/Secure"
   default     = "secure"
@@ -75,4 +69,16 @@ variable "prometheus_svc_type" {
   type        = string
   description = "Type of kubernetes service used for prometheus"
   default     = "ClusterIP"
+}
+
+variable "consul_prometheus_enable" {
+  default     = false
+  description = "Enable Prometheus. This should be used for Demo/Non-Prod only"
+  type        = bool
+}
+
+variable "consul_prometheus_agent_enable" {
+  default     = false
+  description = "Enable Prometheus Agent metrics. This should be used for Demo/Non-Prod only"
+  type        = bool
 }

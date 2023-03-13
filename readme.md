@@ -36,8 +36,9 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_consul_dc_name"></a> [consul\_dc\_name](#input\_consul\_dc\_name) | Consul Datacenter Name | `string` | `"dc-gke"` | no |
 | <a name="input_consul_manage_acls"></a> [consul\_manage\_acls](#input\_consul\_manage\_acls) | Enable/disable system ACLS | `string` | `"false"` | no |
-| <a name="input_consul_namespace"></a> [consul\_namespace](#input\_consul\_namespace) | Namespace for consul deployment on GKE | `string` | `"consul"` | no |
 | <a name="input_consul_ns"></a> [consul\_ns](#input\_consul\_ns) | Namespace for Consul installation | `string` | `"consul"` | no |
+| <a name="input_consul_prometheus_agent_enable"></a> [consul\_prometheus\_agent\_enable](#input\_consul\_prometheus\_agent\_enable) | Enable Prometheus Agent metrics. This should be used for Demo/Non-Prod only | `bool` | `false` | no |
+| <a name="input_consul_prometheus_enable"></a> [consul\_prometheus\_enable](#input\_consul\_prometheus\_enable) | Enable Prometheus. This should be used for Demo/Non-Prod only | `bool` | `false` | no |
 | <a name="input_consul_server_replicas"></a> [consul\_server\_replicas](#input\_consul\_server\_replicas) | Consul server replica count. This will also be used for the Bootstrap exepect value. | `string` | `3` | no |
 | <a name="input_consul_type"></a> [consul\_type](#input\_consul\_type) | Insecure/Secure | `string` | `"secure"` | no |
 | <a name="input_federation_toggle"></a> [federation\_toggle](#input\_federation\_toggle) | Toggle Consul Mesh federation on/off | `string` | `"false"` | no |
