@@ -1,7 +1,5 @@
 [![pre-commit](https://github.com/Arctiq-Terraform-Modules/terraform-consul-gke/actions/workflows/pre-commit-checks.yaml/badge.svg?branch=main)](https://github.com/Arctiq-Terraform-Modules/terraform-consul-gke/actions/workflows/pre-commit-checks.yaml)
 
-[![Github All Releases](https://img.shields.io/github/downloads/<-- User Name-->/<-- Your Repo Name-->/total.svg)]()
-
 ## Requirements
 
 | Name | Version |
