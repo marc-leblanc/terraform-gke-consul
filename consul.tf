@@ -6,11 +6,13 @@ resource "helm_release" "consul" {
   chart            = "consul"
   values = [
     templatefile("${path.module}/templates/consul-${var.consul_type}.tmpl", {
-      datacenter       = var.consul_dc_name
-      federation       = var.federation_toggle
-      meshgateway      = var.meshgateway_toggle
-      replicas         = var.consul_server_replicas
-      manageSystemACLs = var.consul_manage_acls
+      datacenter               = var.consul_dc_name
+      federation               = var.federation_toggle
+      meshgateway              = var.meshgateway_toggle
+      replicas                 = var.consul_server_replicas
+      manageSystemACLs         = var.consul_manage_acls
+      prometheus_enable        = var.consul_prometheus_enable
+      prometheus_agent_metrics = var.consul_prometheus_agent_enable
     })
   ]
 }
