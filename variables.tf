@@ -45,3 +45,22 @@ variable "grafana_enable" {
   type        = bool
   default     = false
 }
+
+variable "grafana_ns" {
+  description = "Namespace for Grafana installation"
+  type        = string
+  default     = "grafana"
+}
+
+variable "prometheus_ns" {
+  type        = string
+  description = "Namespace for Prometheus installation"
+  default     = "prometheus"
+}
+
+variable "consul_ns" {
+  type        = string
+  description = "Namespace for Consul installation"
+  default     = "consul"
+
+}

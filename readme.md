@@ -12,7 +12,6 @@ This module will set up a HashiCorp Consul cluster on an existing GKE cluster.
 | <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | 1.14.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.18.1 |
 
-
 ## Providers
 
 | Name | Version |
@@ -29,12 +28,11 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [helm_release.consul](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
-| [helm_release.grafana](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.consul](https://registry.terraform.io/providers/hashicorp/helm/2.9.0/docs/resources/release) | resource |
+| [helm_release.grafana](https://registry.terraform.io/providers/hashicorp/helm/2.9.0/docs/resources/release) | resource |
+| [helm_release.prometheus](https://registry.terraform.io/providers/hashicorp/helm/2.9.0/docs/resources/release) | resource |
 | [kubectl_manifest.proxy_defaults](https://registry.terraform.io/providers/gavinbunney/kubectl/1.14.0/docs/resources/manifest) | resource |
-| [kubernetes_namespace.consul-namespace](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
-| [kubernetes_service.consul_svc](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/service) | data source |
-
+| [kubernetes_service.consul_svc](https://registry.terraform.io/providers/hashicorp/kubernetes/2.18.1/docs/data-sources/service) | data source |
 
 ## Inputs
 
@@ -43,11 +41,14 @@ No modules.
 | <a name="input_consul_dc_name"></a> [consul\_dc\_name](#input\_consul\_dc\_name) | Consul Datacenter Name | `string` | `"dc-gke"` | no |
 | <a name="input_consul_manage_acls"></a> [consul\_manage\_acls](#input\_consul\_manage\_acls) | Enable/disable system ACLS | `string` | `"false"` | no |
 | <a name="input_consul_namespace"></a> [consul\_namespace](#input\_consul\_namespace) | Namespace for consul deployment on GKE | `string` | `"consul"` | no |
+| <a name="input_consul_ns"></a> [consul\_ns](#input\_consul\_ns) | Namespace for Consul installation | `string` | `"consul"` | no |
 | <a name="input_consul_server_replicas"></a> [consul\_server\_replicas](#input\_consul\_server\_replicas) | Consul server replica count. This will also be used for the Bootstrap exepect value. | `string` | `3` | no |
 | <a name="input_consul_type"></a> [consul\_type](#input\_consul\_type) | Insecure/Secure | `string` | `"secure"` | no |
-| <a name="input_grafana_enable"></a> [grafana\_enable](#input\_grafana\_enable) | Install Grafana | `bool` | `false` | no |
 | <a name="input_federation_toggle"></a> [federation\_toggle](#input\_federation\_toggle) | Toggle Consul Mesh federation on/off | `string` | `"false"` | no |
+| <a name="input_grafana_enable"></a> [grafana\_enable](#input\_grafana\_enable) | Install Grafana | `bool` | `false` | no |
+| <a name="input_grafana_ns"></a> [grafana\_ns](#input\_grafana\_ns) | Namespace for Grafana installation | `string` | `"grafana"` | no |
 | <a name="input_meshgateway_toggle"></a> [meshgateway\_toggle](#input\_meshgateway\_toggle) | Toggle Consul Mesh gateway on/off | `string` | `"false"` | no |
+| <a name="input_prometheus_ns"></a> [prometheus\_ns](#input\_prometheus\_ns) | Namespace for Prometheus installation | `string` | `"prometheus"` | no |
 
 ## Outputs
 
