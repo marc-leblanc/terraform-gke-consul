@@ -1,15 +1,9 @@
-resource "kubernetes_namespace" "consul-namespace" {
-  metadata {
-    name = var.consul_namespace
-  }
-}
-
 resource "helm_release" "consul" {
-  name      = "consul"
-  namespace = kubernetes_namespace.consul-namespace.metadata[0].name
-
-  repository = "https://helm.releases.hashicorp.com"
-  chart      = "consul"
+  name             = "consul"
+  namespace        = var.consul_ns
+  create_namespace = true
+  repository       = "https://helm.releases.hashicorp.com"
+  chart            = "consul"
   values = [
     templatefile("${path.module}/templates/consul-${var.consul_type}.tmpl", {
       datacenter       = var.consul_dc_name
@@ -53,11 +47,24 @@ YAML
 resource "helm_release" "grafana" {
   count = var.grafana_enable ? 1 : 0
 
-  name       = "grafana"
-  repository = "https://grafana.github.io/helm-charts"
-  chart      = "grafana"
+  name             = "grafana"
+  repository       = "https://grafana.github.io/helm-charts"
+  chart            = "grafana"
+  namespace        = var.grafana_ns
+  create_namespace = true
 }
 
+
+resource "helm_release" "prometheus" {
+  count = var.grafana_enable ? 1 : 0
+
+  name             = "prometheus"
+  repository       = "https://prometheus-community.github.io/helm-charts"
+  chart            = "prometheus"
+  create_namespace = true
+  namespace        = var.prometheus_ns
+
+}
 output "mesh_gateway_addr" {
   value = data.kubernetes_service.consul_svc.status[0].load_balancer[0].ingress[0].ip
 }
