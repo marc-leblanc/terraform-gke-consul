@@ -52,6 +52,9 @@ resource "helm_release" "grafana" {
   chart            = "grafana"
   namespace        = var.grafana_ns
   create_namespace = true
+  values = [
+    "service:\n  type: ${var.grafana_svc_type}"
+  ]
 }
 
 

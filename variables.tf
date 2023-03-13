@@ -64,3 +64,9 @@ variable "consul_ns" {
   default     = "consul"
 
 }
+
+variable "grafana_svc_type" {
+  type        = string
+  description = "Type of kubernetes service used for grafana"
+  default     = "ClusterIP"
+}
