@@ -1,8 +1,6 @@
 [![pre-commit](https://github.com/Arctiq-Terraform-Modules/terraform-consul-gke/actions/workflows/pre-commit-checks.yaml/badge.svg?branch=main)](https://github.com/Arctiq-Terraform-Modules/terraform-consul-gke/actions/workflows/pre-commit-checks.yaml)
 
-# Consul on GKE
-
-This module will set up a HashiCorp Consul cluster on an existing GKE cluster.
+[![Github All Releases](https://img.shields.io/github/downloads/<-- User Name-->/<-- Your Repo Name-->/total.svg)]()
 
 ## Requirements
 
@@ -50,6 +48,7 @@ No modules.
 | <a name="input_grafana_svc_type"></a> [grafana\_svc\_type](#input\_grafana\_svc\_type) | Type of kubernetes service used for grafana | `string` | `"ClusterIP"` | no |
 | <a name="input_meshgateway_toggle"></a> [meshgateway\_toggle](#input\_meshgateway\_toggle) | Toggle Consul Mesh gateway on/off | `string` | `"false"` | no |
 | <a name="input_prometheus_ns"></a> [prometheus\_ns](#input\_prometheus\_ns) | Namespace for Prometheus installation | `string` | `"prometheus"` | no |
+| <a name="input_prometheus_svc_type"></a> [prometheus\_svc\_type](#input\_prometheus\_svc\_type) | Type of kubernetes service used for prometheus | `string` | `"ClusterIP"` | no |
 
 ## Outputs
 
