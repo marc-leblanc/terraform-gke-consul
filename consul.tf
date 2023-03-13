@@ -67,7 +67,7 @@ resource "helm_release" "prometheus" {
   create_namespace = true
   namespace        = var.prometheus_ns
   values = [
-    "service:\n  type: ${var.grafana_svc_type}"
+    "server:\n  service:\n    type: ${var.prometheus_svc_type}"
   ]
 
 }
