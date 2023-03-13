@@ -70,3 +70,9 @@ variable "grafana_svc_type" {
   description = "Type of kubernetes service used for grafana"
   default     = "ClusterIP"
 }
+
+variable "prometheus_svc_type" {
+  type        = string
+  description = "Type of kubernetes service used for prometheus"
+  default     = "ClusterIP"
+}
