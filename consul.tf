@@ -11,7 +11,6 @@ resource "helm_release" "consul" {
       meshgateway              = var.meshgateway_toggle
       replicas                 = var.consul_server_replicas
       manageSystemACLs         = var.consul_manage_acls
-      prometheus_enable        = var.consul_prometheus_enable
       prometheus_agent_metrics = var.consul_prometheus_agent_enable
       ingressgateways          = var.ingressgateway_toggle
       ingressgateways_svc      = var.ingressgateway_svc
