@@ -40,3 +40,9 @@ meshGateway:
     enableAgentMetrics: ${prometheus_agent_metrics}
     agentMetricsRetentionTime: 1m
     enableGatewayMetrics: true
+ingressGateways:
+  enabled: ${ingressgateways}
+  defaults:
+    replicas: 2
+    service:
+      type: ${ingressgateways_svc}
