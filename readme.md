@@ -45,6 +45,8 @@ No modules.
 | <a name="input_grafana_enable"></a> [grafana\_enable](#input\_grafana\_enable) | Install Grafana | `bool` | `false` | no |
 | <a name="input_grafana_ns"></a> [grafana\_ns](#input\_grafana\_ns) | Namespace for Grafana installation | `string` | `"grafana"` | no |
 | <a name="input_grafana_svc_type"></a> [grafana\_svc\_type](#input\_grafana\_svc\_type) | Type of kubernetes service used for grafana | `string` | `"ClusterIP"` | no |
+| <a name="input_ingressgateway_svc"></a> [ingressgateway\_svc](#input\_ingressgateway\_svc) | Default Ingress Gateway service type | `string` | `"LoadBalancer"` | no |
+| <a name="input_ingressgateway_toggle"></a> [ingressgateway\_toggle](#input\_ingressgateway\_toggle) | Turn Ingress Gatways On/Off | `bool` | `false` | no |
 | <a name="input_meshgateway_toggle"></a> [meshgateway\_toggle](#input\_meshgateway\_toggle) | Toggle Consul Mesh gateway on/off | `string` | `"false"` | no |
 | <a name="input_prometheus_ns"></a> [prometheus\_ns](#input\_prometheus\_ns) | Namespace for Prometheus installation | `string` | `"prometheus"` | no |
 | <a name="input_prometheus_svc_type"></a> [prometheus\_svc\_type](#input\_prometheus\_svc\_type) | Type of kubernetes service used for prometheus | `string` | `"ClusterIP"` | no |

@@ -82,3 +82,16 @@ variable "consul_prometheus_agent_enable" {
   description = "Enable Prometheus Agent metrics. This should be used for Demo/Non-Prod only"
   type        = bool
 }
+
+variable "ingressgateway_toggle" {
+  type        = bool
+  description = "Turn Ingress Gatways On/Off"
+  default     = false
+}
+
+variable "ingressgateway_svc" {
+  type        = string
+  description = "Default Ingress Gateway service type"
+  default     = "LoadBalancer"
+
+}
