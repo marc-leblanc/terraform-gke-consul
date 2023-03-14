@@ -11,15 +11,15 @@ variable "consul_dc_name" {
 }
 
 variable "federation_toggle" {
-  type        = string
+  type        = bool
   description = "Toggle Consul Mesh federation on/off"
-  default     = "false"
+  default     = false
 }
 
 variable "meshgateway_toggle" {
-  type        = string
+  type        = bool
   description = "Toggle Consul Mesh gateway on/off"
-  default     = "false"
+  default     = false
 }
 variable "consul_server_replicas" {
   type        = string

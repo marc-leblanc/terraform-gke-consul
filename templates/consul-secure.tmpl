@@ -35,11 +35,11 @@ ui:
 meshGateway:
   enabled: ${meshgateway}
   replicas: 1
-  metrics:
-    enabled: ${prometheus_enable}
-    enableAgentMetrics: ${prometheus_agent_metrics}
-    agentMetricsRetentionTime: 1m
-    enableGatewayMetrics: true
+metrics:
+  enabled: ${prometheus_enable}
+  enableAgentMetrics: ${prometheus_agent_metrics}
+  agentMetricsRetentionTime: 1m
+  enableGatewayMetrics: true
 ingressGateways:
   enabled: ${ingressgateways}
   defaults:
