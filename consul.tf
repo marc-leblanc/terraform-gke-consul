@@ -5,7 +5,7 @@ resource "helm_release" "consul" {
   repository       = "https://helm.releases.hashicorp.com"
   chart            = "consul"
   values = [
-    templatefile("${path.module}/templates/consul-${var.consul_type}.tmpl", {
+    templatefile("${path.module}/templates/consul-values.yaml", {
       datacenter               = var.consul_dc_name
       federation               = var.federation_toggle
       meshgateway              = var.meshgateway_toggle
@@ -72,10 +72,14 @@ resource "helm_release" "prometheus" {
   create_namespace = true
   namespace        = var.prometheus_ns
   values = [
-    "server:\n  service:\n    type: ${var.prometheus_svc_type}"
+    templatefile("${path.module}/templates/prometheus-values.yaml", {
+      prometheus_svc_type = var.prometheus_svc_type
+      consul_namespace    = var.consul_ns
+    })
   ]
-
 }
+
+
 output "mesh_gateway_addr" {
   value = data.kubernetes_service.consul_svc.status[0].load_balancer[0].ingress[0].ip
 }
