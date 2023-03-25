@@ -1,8 +1,3 @@
-variable "consul_type" {
-  description = "Insecure/Secure"
-  default     = "secure"
-  type        = string
-}
 
 variable "consul_dc_name" {
   description = "Consul Datacenter Name"
