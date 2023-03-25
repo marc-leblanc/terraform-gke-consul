@@ -15,6 +15,7 @@ resource "helm_release" "consul" {
       ingressgateways          = var.ingressgateway_toggle
       ingressgateways_svc      = var.ingressgateway_svc
       prometheus_demo_enable   = var.prometheus_demo_enable
+      prometheus_ns            = var.prometheus_ns
     })
   ]
 }
