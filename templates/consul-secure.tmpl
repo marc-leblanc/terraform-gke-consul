@@ -15,6 +15,10 @@ global:
   acls:
     manageSystemACLs: ${manageSystemACLs}
     createReplicationToken:  ${manageSystemACLs}
+  metrics:
+    enabled: true
+    enableAgentMetrics: true
+    agentMetricsRetentionTime: "1m"
 server:
   replicas: ${replicas}
   bootstrapExpect: ${replicas}
@@ -28,6 +32,8 @@ connectInject:
   metrics:
     defaultEnabled: true # by default, this inherits from the value global.metrics.enabled
     defaultEnableMerging: true
+    defaultPrometheusScrapePort: 20200
+    defaultPrometheusScrapePath: "/metrics"
 syncCatalog:
   enabled: false
 controller:
