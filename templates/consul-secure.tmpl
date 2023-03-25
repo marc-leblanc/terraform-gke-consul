@@ -25,6 +25,9 @@ server:
     manageSystemACLs:  ${manageSystemACLs}
 connectInject:
   enabled: true
+  metrics:
+    defaultEnabled: true # by default, this inherits from the value global.metrics.enabled
+    defaultEnableMerging: true
 syncCatalog:
   enabled: false
 controller:
@@ -32,6 +35,10 @@ controller:
 ui:
   service:
     type: 'LoadBalancer'
+  metrics:
+    enabled: true
+    provider: "prometheus"
+    baseURL: "http://prometheus-server.${prometheus_ns}.svc.cluster.local"
 meshGateway:
   enabled: ${meshgateway}
   replicas: 1
