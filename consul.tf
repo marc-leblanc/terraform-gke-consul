@@ -87,7 +87,3 @@ resource "helm_release" "prometheus" {
   ]
 }
 
-
-output "mesh_gateway_addr" {
-  value = data.kubernetes_service.consul_svc.status[0].load_balancer[0].ingress[0].ip
-}
