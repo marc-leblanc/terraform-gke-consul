@@ -61,7 +61,7 @@ resource "helm_release" "grafana" {
       grafana_svc_type      = var.prometheus_svc_type
       prometheus_ns         = var.prometheus_ns
       consul_dashboard_uid  = var.consul_dashboard_uid
-      consul_dashboard_json = file("./dashboards/consul-metrics.json")
+      consul_dashboard_json = file("${path.module}/dashboards/consul-metrics.json")
 
     })
   ]

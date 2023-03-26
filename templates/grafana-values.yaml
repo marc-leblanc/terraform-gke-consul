@@ -12,9 +12,8 @@ datasources:
         editable: true
 dashboards:
   default:
-    consul-dashboard:
-      json: |
-        ${consul_dashboard_json}
+    custom-dashboard:
+      file: dashboards/consul-metrics.json
       uid: ${consul_dashboard_uid}
 service:
   type: ${grafana_svc_type}
