@@ -31,9 +31,7 @@ connectInject:
   enabled: true
   metrics:
     defaultEnabled: true # by default, this inherits from the value global.metrics.enabled
-    defaultEnableMerging: true
-    defaultPrometheusScrapePort: 20200
-    defaultPrometheusScrapePath: "/metrics"
+    defaultEnableMerging: false
 syncCatalog:
   enabled: false
 controller:
