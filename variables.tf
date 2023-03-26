@@ -90,3 +90,9 @@ variable "ingressgateway_svc" {
   default     = "LoadBalancer"
 
 }
+
+variable "consul_dashboard_uid" {
+  type        = string
+  description = "Custom UID for the Grafana Dashboard to force a slug"
+  default     = "consul"
+}

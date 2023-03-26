@@ -34,6 +34,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_consul_dashboard_uid"></a> [consul\_dashboard\_uid](#input\_consul\_dashboard\_uid) | Custom UID for the Grafana Dashboard to force a slug | `string` | `"consul"` | no |
 | <a name="input_consul_dc_name"></a> [consul\_dc\_name](#input\_consul\_dc\_name) | Consul Datacenter Name | `string` | `"dc-gke"` | no |
 | <a name="input_consul_manage_acls"></a> [consul\_manage\_acls](#input\_consul\_manage\_acls) | Enable/disable system ACLS | `string` | `"false"` | no |
 | <a name="input_consul_ns"></a> [consul\_ns](#input\_consul\_ns) | Namespace for Consul installation | `string` | `"consul"` | no |

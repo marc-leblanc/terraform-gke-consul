@@ -58,8 +58,10 @@ resource "helm_release" "grafana" {
   create_namespace = true
   values = [
     templatefile("${path.module}/templates/grafana-values.yaml", {
-      grafana_svc_type = var.prometheus_svc_type
-      prometheus_ns    = var.prometheus_ns
+      grafana_svc_type      = var.prometheus_svc_type
+      prometheus_ns         = var.prometheus_ns
+      consul_dashboard_uid  = var.consul_dashboard_uid
+      consul_dashboard_json = file("./dashboards/consul-metrics.json")
 
     })
   ]
@@ -83,9 +85,4 @@ resource "helm_release" "prometheus" {
 
     })
   ]
-}
-
-
-output "mesh_gateway_addr" {
-  value = data.kubernetes_service.consul_svc.status[0].load_balancer[0].ingress[0].ip
 }
