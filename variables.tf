@@ -90,9 +90,3 @@ variable "ingressgateway_svc" {
   default     = "LoadBalancer"
 
 }
-
-variable "prometheus_demo_enable" {
-  type        = bool
-  description = "Enable Prometheus for Demo purposes"
-  default     = false
-}
