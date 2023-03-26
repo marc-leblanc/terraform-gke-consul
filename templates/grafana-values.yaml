@@ -6,9 +6,15 @@ datasources:
         type: prometheus
         access: proxy
         orgId: 1
-        url: http://prometheus-server.${prometheus_ns}
+        url: http://prometheus-server.${prometheus_ns}.svc.cluster.local
         isDefault: true
         version: 1
         editable: true
+dashboards:
+  default:
+    consul-dashboard:
+      json: |
+        ${consul_dashboard_json}
+      uid: ${consul_dashboard_uid}
 service:
   type: ${grafana_svc_type}
