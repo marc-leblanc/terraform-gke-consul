@@ -40,7 +40,6 @@ No modules.
 | <a name="input_consul_prometheus_agent_enable"></a> [consul\_prometheus\_agent\_enable](#input\_consul\_prometheus\_agent\_enable) | Enable Prometheus Agent metrics. This should be used for Demo/Non-Prod only | `bool` | `false` | no |
 | <a name="input_consul_prometheus_enable"></a> [consul\_prometheus\_enable](#input\_consul\_prometheus\_enable) | Enable Prometheus. This should be used for Demo/Non-Prod only | `bool` | `false` | no |
 | <a name="input_consul_server_replicas"></a> [consul\_server\_replicas](#input\_consul\_server\_replicas) | Consul server replica count. This will also be used for the Bootstrap exepect value. | `string` | `3` | no |
-| <a name="input_consul_type"></a> [consul\_type](#input\_consul\_type) | Insecure/Secure | `string` | `"secure"` | no |
 | <a name="input_federation_toggle"></a> [federation\_toggle](#input\_federation\_toggle) | Toggle Consul Mesh federation on/off | `bool` | `false` | no |
 | <a name="input_grafana_enable"></a> [grafana\_enable](#input\_grafana\_enable) | Install Grafana | `bool` | `false` | no |
 | <a name="input_grafana_ns"></a> [grafana\_ns](#input\_grafana\_ns) | Namespace for Grafana installation | `string` | `"grafana"` | no |
