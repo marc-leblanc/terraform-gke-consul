@@ -53,6 +53,4 @@ No modules.
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_mesh_gateway_addr"></a> [mesh\_gateway\_addr](#output\_mesh\_gateway\_addr) | n/a |
+No outputs.
