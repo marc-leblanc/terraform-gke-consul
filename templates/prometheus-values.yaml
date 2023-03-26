@@ -21,3 +21,29 @@ server:
           regex: metrics
         - action: labelmap
           regex: __meta_kubernetes_service_label_(.+)
+    - job_name: 'consul-services'
+      metrics_path: '/metrics'
+      params:
+        format: ['prometheus']
+      consul_sd_configs:
+        - server: 'consul-server.${consul_ns}.svc.cluster.local:8501'
+          datacenter: '${consul_datacenter}'
+          services: []
+          tag_separator: ','
+      relabel_configs:
+        - source_labels: ['__meta_consul_tags']
+          regex: '.*,prometheus,.*'
+          action: 'keep'
+        - source_labels: ['__meta_consul_tags']
+          regex: '.*,prometheus_path=([^,]+),.*'
+          action: 'replace'
+          target_label: 'metrics_path'
+          replacement: '/${1}'
+        - source_labels: ['__meta_consul_service']
+          target_label: 'job'
+        - source_labels: ['__meta_consul_service_metadata_prometheus_scrape_port']
+          target_label: '__address__'
+          regex: '(.+);(.+)'
+          replacement: '${1}:${2}'
+        - source_labels: ['__meta_consul_node']
+          target_label: 'instance'

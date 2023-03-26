@@ -75,6 +75,9 @@ resource "helm_release" "prometheus" {
     templatefile("${path.module}/templates/prometheus-values.yaml", {
       prometheus_svc_type = var.prometheus_svc_type
       consul_namespace    = var.consul_ns
+      consul_datacenter   = var.consul_dc_name
+      consul_ns           = var.consul_ns
+
     })
   ]
 }
