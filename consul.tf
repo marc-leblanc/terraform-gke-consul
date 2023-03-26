@@ -14,7 +14,6 @@ resource "helm_release" "consul" {
       prometheus_agent_metrics = var.consul_prometheus_agent_enable
       ingressgateways          = var.ingressgateway_toggle
       ingressgateways_svc      = var.ingressgateway_svc
-      prometheus_demo_enable   = var.prometheus_demo_enable
       prometheus_ns            = var.prometheus_ns
     })
   ]
@@ -58,7 +57,11 @@ resource "helm_release" "grafana" {
   namespace        = var.grafana_ns
   create_namespace = true
   values = [
-    "service:\n  type: ${var.grafana_svc_type}"
+    templatefile("${path.module}/templates/grafana-values.yaml", {
+      grafana_svc_type = var.prometheus_svc_type
+      prometheus_ns    = var.prometheus_ns
+
+    })
   ]
 }
 

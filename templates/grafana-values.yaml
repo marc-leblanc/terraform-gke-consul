@@ -1,0 +1,14 @@
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        access: proxy
+        orgId: 1
+        url: http://prometheus-server.${prometheus_ns}
+        isDefault: true
+        version: 1
+        editable: true
+service:
+  type: ${grafana_svc_type}

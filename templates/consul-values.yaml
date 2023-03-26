@@ -61,5 +61,3 @@ ingressGateways:
         'prometheus.io/scrape': "true"
         'prometheus.io/port': "20200"
         'prometheus.io/path': "/metrics"
-prometheus:
-  enabled: ${prometheus_demo_enable}
