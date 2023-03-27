@@ -32,6 +32,7 @@ dashboardProviders:
       editable: true
       options:
         path: /var/lib/grafana/dashboards/consul-dashboard
+
 extraInitContainers:
   - name: decode-dashboard
     image: busybox
@@ -41,8 +42,5 @@ extraInitContainers:
       - >
         echo "${consul_dashboard_base64}" | base64 -d > /var/lib/grafana/dashboards/consul-dashboard.json
     volumeMounts:
-      - name: consul-dashboard
-        mountPath: /var/lib/grafana/dashboards/
-extraVolumes:
-  - name: consul-dashboard
-    emptyDir: {}
+      - name: dashboards-default
+        mountPath: /var/lib/grafana/dashboards
