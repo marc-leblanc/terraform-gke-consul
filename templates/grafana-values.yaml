@@ -26,6 +26,7 @@ extraConfigmapMounts:
     configMap: consul-dashboard
     mountPath: /etc/grafana/dashboards/consul
     subPath: ""
+    readOnly: false
 
 
 dashboardProviders:
