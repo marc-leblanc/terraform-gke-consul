@@ -48,7 +48,7 @@ YAML
 }
 
 locals {
-  consul_dashboard_json = base64encode(file("${path.module}/assets/dashboards/consul-metrics.json"))
+  consul_dashboard_json = file("${path.module}/assets/dashboards/consul-metrics.json")
 }
 
 resource "kubernetes_namespace" "grafana" {
@@ -59,16 +59,31 @@ resource "kubernetes_namespace" "grafana" {
   }
 }
 
-resource "kubectl_manifest" "consul_dashboard" {
-  count = var.grafana_enable ? 1 : 0
+
+resource "kubernetes_config_map" "example" {
+  metadata {
+    name      = "consul-dashboard"
+    namespace = var.grafana_ns
+  }
+
+  data = {
+    "consul-dashboard.json" = local.consul_dashboard_json
+
+  }
 
   depends_on = [resource.kubernetes_namespace.grafana]
-
-  yaml_body = templatefile("${path.module}/assets/configmaps/consul-metrics-dashboard-cm.yaml", {
-    consul_dashboard_json = base64decode(local.consul_dashboard_json),
-    grafana_ns            = var.grafana_ns
-  })
 }
+
+#resource "kubectl_manifest" "consul_dashboard" {
+#  count = var.grafana_enable ? 1 : 0
+#
+#depends_on = [resource.kubernetes_namespace.grafana]
+
+#yaml_body = templatefile("${path.module}/assets/configmaps/consul-metrics-dashboard-cm.yaml", {
+#  consul_dashboard_json = base64decode(local.consul_dashboard_json),
+#  grafana_ns            = var.grafana_ns
+#})
+#}
 resource "helm_release" "grafana" {
   count = var.grafana_enable ? 1 : 0
 
