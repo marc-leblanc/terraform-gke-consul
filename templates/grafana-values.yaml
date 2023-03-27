@@ -31,4 +31,4 @@ dashboardProviders:
       disableDeletion: false
       editable: true
       options:
-        path: /etc/grafana/dashboards/consul
+        path: /var/lib/grafana/dashboards/default/
