@@ -3,6 +3,9 @@ kind: ConfigMap
 metadata:
   name: consul-dashboard
   namespace: ${grafana_ns}
+  labels:
+    app: grafana
+    grafana_dashboard: "1"
 data:
-  consul_dashboard.json: |
+  consul-dashboard.json: |-
     ${consul_dashboard_json}
