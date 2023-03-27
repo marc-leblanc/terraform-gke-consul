@@ -39,10 +39,6 @@ YAML
   ]
 }
 
-locals {
-  consul_dashboard_yaml = file("${path.module}/assets/dashboards/consul-metrics.yaml")
-}
-
 resource "kubernetes_namespace" "grafana" {
   count = var.grafana_enable ? 1 : 0
 
@@ -59,7 +55,7 @@ resource "kubernetes_config_map" "consul-dashboard" {
   }
 
   data = {
-    "consul-dashboard.yaml" = templatefile("${path.module}/assets/dashboards/consul-metrics.yaml",{
+    "consul-dashboard.yaml" = templatefile("${path.module}/assets/dashboards/consul-metrics.yaml", {
       DS_THANOS-MASTER = var.consul_dashboard_uid
     })
 
@@ -79,9 +75,9 @@ resource "helm_release" "grafana" {
   create_namespace = true
   values = [
     templatefile("${path.module}/templates/grafana-values.yaml", {
-      grafana_svc_type        = var.grafana_svc_type
-      prometheus_ns           = var.prometheus_ns
-      consul_dashboard_uid    = var.consul_dashboard_uid
+      grafana_svc_type     = var.grafana_svc_type
+      prometheus_ns        = var.prometheus_ns
+      consul_dashboard_uid = var.consul_dashboard_uid
     })
   ]
 }
