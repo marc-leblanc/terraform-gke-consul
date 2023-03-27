@@ -12,8 +12,29 @@ datasources:
         editable: true
 dashboards:
   default:
-    custom-dashboard:
-      file: dashboards/consul-metrics.json
+    consul-dashboard:
       uid: ${consul_dashboard_uid}
 service:
   type: ${grafana_svc_type}
+
+grafana.ini:
+  paths:
+    provisioning: /etc/grafana/provisioning
+
+extraConfigmapMounts:
+  - name: consul-dashboard
+    configMap: consul-dashboard
+    mountPath: /etc/grafana/dashboards/consul
+
+dashboardProviders:
+  dashboardproviders.yaml:
+    apiVersion: 1
+    providers:
+    - name: 'default'
+      orgId: 1
+      folder: ''
+      type: file
+      disableDeletion: false
+      editable: true
+      options:
+        path: /etc/grafana/dashboards/consul
