@@ -44,3 +44,7 @@ extraInitContainers:
     volumeMounts:
       - name: dashboards-default
         mountPath: /var/lib/grafana/dashboards
+
+extraVolumes:
+  - name: dashboards-default
+    emptyDir: {}
