@@ -43,3 +43,6 @@ extraInitContainers:
     volumeMounts:
       - name: consul-dashboard
         mountPath: /var/lib/grafana/dashboards/
+extraVolumes:
+  - name: consul-dashboard
+    emptyDir: {}
