@@ -40,14 +40,18 @@ extraInitContainers:
       - /bin/sh
       - -c
       - >
-        echo "${consul_dashboard_base64}" | base64 -d > /var/lib/grafana/dashboards/consul-dashboard.json
+        cat /etc/grafana/consul-dashboard-base64/consul-dashboard.json.base64 | base64 -d > /var/lib/grafana/dashboards/consul-dashboard.json
     volumeMounts:
+      - name: consul-dashboard-base64
+        mountPath: /etc/grafana/consul-dashboard-base64
       - name: dashboards
         mountPath: /var/lib/grafana/dashboards
-
 extraVolumes:
   - name: dashboards
     emptyDir: {}
+  - name: consul-dashboard-base64
+    configMap:
+      name: consul-dashboard
 
 extraVolumeMounts:
   - name: dashboards
