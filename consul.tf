@@ -18,15 +18,15 @@ resource "helm_release" "consul" {
     })
   ]
 }
-data "kubernetes_service" "consul_svc" {
-  depends_on = [
-    resource.helm_release.consul
-  ]
-  metadata {
-    namespace = "consul"
-    name      = "consul-mesh-gateway"
-  }
-}
+#data "kubernetes_service" "consul_svc" {
+#  depends_on = [
+#    resource.helm_release.consul
+#  ]
+#  metadata {
+#   namespace = "consul"
+#    name      = "consul-mesh-gateway"
+#  }
+#}
 resource "kubectl_manifest" "proxy_defaults" {
 
 
@@ -79,7 +79,7 @@ resource "helm_release" "grafana" {
   create_namespace = true
   values = [
     templatefile("${path.module}/templates/grafana-values.yaml", {
-      grafana_svc_type     = var.prometheus_svc_type
+      grafana_svc_type     = var.grafana_svc_type
       prometheus_ns        = var.prometheus_ns
       consul_dashboard_uid = var.consul_dashboard_uid
     })
@@ -88,7 +88,7 @@ resource "helm_release" "grafana" {
 
 
 resource "helm_release" "prometheus" {
-  count = var.grafana_enable ? 1 : 0
+  count = var.consul_prometheus_enable ? 1 : 0
 
   name             = "prometheus"
   repository       = "https://prometheus-community.github.io/helm-charts"

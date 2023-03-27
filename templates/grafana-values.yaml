@@ -40,3 +40,6 @@ dashboardProviders:
       editable: true
       options:
         path: /etc/grafana/dashboards/consul
+initChownData:
+  runAsUser: 0
+  fsGroup: 0
