@@ -18,15 +18,7 @@ resource "helm_release" "consul" {
     })
   ]
 }
-#data "kubernetes_service" "consul_svc" {
-#  depends_on = [
-#    resource.helm_release.consul
-#  ]
-#  metadata {
-#   namespace = "consul"
-#    name      = "consul-mesh-gateway"
-#  }
-#}
+
 resource "kubectl_manifest" "proxy_defaults" {
 
 
@@ -48,7 +40,7 @@ YAML
 }
 
 locals {
-  consul_dashboard_json = file("${path.module}/assets/dashboards/consul-metrics.json")
+  consul_dashboard_yaml = file("${path.module}/assets/dashboards/consul-metrics.yaml")
 }
 
 resource "kubernetes_namespace" "grafana" {
@@ -60,30 +52,23 @@ resource "kubernetes_namespace" "grafana" {
 }
 
 
-resource "kubernetes_config_map" "example" {
+resource "kubernetes_config_map" "consul-dashboard" {
   metadata {
     name      = "consul-dashboard"
     namespace = var.grafana_ns
   }
 
   data = {
-    "consul-dashboard.json" = local.consul_dashboard_json
+    "consul-dashboard.yaml" = templatefile("${path.module}/assets/dashboards/consul-metrics.yaml",{
+      DS_THANOS-MASTER = var.consul_dashboard_uid
+    })
 
   }
 
   depends_on = [resource.kubernetes_namespace.grafana]
 }
 
-#resource "kubectl_manifest" "consul_dashboard" {
-#  count = var.grafana_enable ? 1 : 0
-#
-#depends_on = [resource.kubernetes_namespace.grafana]
 
-#yaml_body = templatefile("${path.module}/assets/configmaps/consul-metrics-dashboard-cm.yaml", {
-#  consul_dashboard_json = base64decode(local.consul_dashboard_json),
-#  grafana_ns            = var.grafana_ns
-#})
-#}
 resource "helm_release" "grafana" {
   count = var.grafana_enable ? 1 : 0
 
@@ -97,7 +82,6 @@ resource "helm_release" "grafana" {
       grafana_svc_type        = var.grafana_svc_type
       prometheus_ns           = var.prometheus_ns
       consul_dashboard_uid    = var.consul_dashboard_uid
-      consul_dashboard_base64 = local.consul_dashboard_json
     })
   ]
 }

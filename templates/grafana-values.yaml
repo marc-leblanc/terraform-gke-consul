@@ -10,6 +10,7 @@ datasources:
         isDefault: true
         version: 1
         editable: true
+        uid: ${consul_dashboard_uid}
 service:
   type: ${grafana_svc_type}
 
