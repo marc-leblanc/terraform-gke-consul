@@ -42,9 +42,13 @@ extraInitContainers:
       - >
         echo "${consul_dashboard_base64}" | base64 -d > /var/lib/grafana/dashboards/consul-dashboard.json
     volumeMounts:
-      - name: dashboards-default
+      - name: dashboards
         mountPath: /var/lib/grafana/dashboards
 
 extraVolumes:
-  - name: dashboards-default
+  - name: dashboards
     emptyDir: {}
+
+extraVolumeMounts:
+  - name: dashboards
+    mountPath: /var/lib/grafana/dashboards
