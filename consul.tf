@@ -79,9 +79,10 @@ resource "helm_release" "grafana" {
   create_namespace = true
   values = [
     templatefile("${path.module}/templates/grafana-values.yaml", {
-      grafana_svc_type     = var.grafana_svc_type
-      prometheus_ns        = var.prometheus_ns
-      consul_dashboard_uid = var.consul_dashboard_uid
+      grafana_svc_type        = var.grafana_svc_type
+      prometheus_ns           = var.prometheus_ns
+      consul_dashboard_uid    = var.consul_dashboard_uid
+      consul_dashboard_base64 = local.consul_dashboard_json
     })
   ]
 }
