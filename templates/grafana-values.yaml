@@ -25,6 +25,8 @@ extraConfigmapMounts:
   - name: consul-dashboard
     configMap: consul-dashboard
     mountPath: /etc/grafana/dashboards/consul
+    subPath: ""
+
 
 dashboardProviders:
   dashboardproviders.yaml:
