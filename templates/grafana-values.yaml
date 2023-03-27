@@ -21,13 +21,15 @@ grafana.ini:
   paths:
     provisioning: /etc/grafana/provisioning
 
-extraConfigmapMounts:
-  - name: consul-dashboard
-    configMap: consul-dashboard
-    mountPath: /etc/grafana/dashboards/consul
-    subPath: ""
-    readOnly: false
+#extraConfigmapMounts:
+#  - name: consul-dashboard
+#    configMap: consul-dashboard
+#    mountPath: /etc/grafana/dashboards/consul
+#    subPath: ""
+#    readOnly: false
 
+dashboardsConfigMaps:
+  default: "consul-dashboard"
 
 dashboardProviders:
   dashboardproviders.yaml:
