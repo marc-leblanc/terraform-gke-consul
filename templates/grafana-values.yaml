@@ -21,28 +21,5 @@ grafana.ini:
   paths:
     provisioning: /etc/grafana/provisioning
 
-#extraConfigmapMounts:
-#  - name: consul-dashboard
-#    configMap: consul-dashboard
-#    mountPath: /etc/grafana/dashboards/consul
-#    subPath: ""
-#    readOnly: false
-
 dashboardsConfigMaps:
   default: "consul-dashboard"
-
-dashboardProviders:
-  dashboardproviders.yaml:
-    apiVersion: 1
-    providers:
-    - name: 'default'
-      orgId: 1
-      folder: ''
-      type: file
-      disableDeletion: false
-      editable: true
-      options:
-        path: /etc/grafana/dashboards/consul
-initChownData:
-  runAsUser: 0
-  fsGroup: 0
