@@ -18,17 +18,17 @@ grafana.ini:
     provisioning: /etc/grafana/provisioning
 
 dashboardsConfigMaps:
-  default: "consul-dashboard"
+  consul-dashboard: "consul-dashboard"
 
 dashboardProviders:
   dashboardproviders.yaml:
     apiVersion: 1
     providers:
-    - name: 'default'
+    - name: 'consul-dashboard'
       orgId: 1
       folder: ''
       type: file
       disableDeletion: false
       editable: true
       options:
-        path: /var/lib/grafana/dashboards/default/
+        path: /var/lib/grafana/dashboards/consul-dashboard
