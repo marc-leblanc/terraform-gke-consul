@@ -48,7 +48,7 @@ YAML
 }
 
 locals {
-  consul_dashboard_json = file("${path.module}/path/to/consul_dashboard.json")
+  consul_dashboard_json = file("${path.module}/assets/dashboards/consul-metrics.json")
 }
 
 data "template_file" "consul_dashboard_configmap" {
