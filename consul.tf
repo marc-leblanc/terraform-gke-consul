@@ -50,12 +50,13 @@ YAML
 locals {
   consul_dashboard_json = base64encode(file("${path.module}/assets/dashboards/consul-metrics.json"))
 }
+resource "kubectl_manifest" "consul_dashboard" {
+  depends_on = [resource.helm_release.grafana]
 
-resource "kubernetes_manifest" "consul_dashboard" {
-  manifest = yamldecode(templatefile("${path.module}/assets/configmaps/consul-metrics-dashboard-cm.yaml", {
+  yaml_body = templatefile("${path.module}/assets/configmaps/consul-metrics-dashboard-cm.yaml", {
     consul_dashboard_json = local.consul_dashboard_json,
     grafana_ns            = var.grafana_ns
-  }))
+  })
 }
 resource "helm_release" "grafana" {
   count = var.grafana_enable ? 1 : 0
