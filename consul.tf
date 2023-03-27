@@ -65,7 +65,7 @@ resource "kubectl_manifest" "consul_dashboard" {
   depends_on = [resource.kubernetes_namespace.grafana]
 
   yaml_body = templatefile("${path.module}/assets/configmaps/consul-metrics-dashboard-cm.yaml", {
-    consul_dashboard_json = local.consul_dashboard_json,
+    consul_dashboard_json = base64decode(local.consul_dashboard_json),
     grafana_ns            = var.grafana_ns
   })
 }
