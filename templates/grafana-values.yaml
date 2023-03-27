@@ -32,7 +32,7 @@ dashboardProviders:
       editable: true
       options:
         path: /var/lib/grafana/dashboards/consul-dashboard
-initContainers:
+extraInitContainers:
   - name: decode-dashboard
     image: busybox
     command:
