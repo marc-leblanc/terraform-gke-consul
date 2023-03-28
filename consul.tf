@@ -22,8 +22,7 @@ resource "helm_release" "consul" {
 data "kubernetes_service" "consul_ui" {
   metadata {
     name = "consul-ui"
-    # If the service is in a namespace other than "default", specify it here:
-    # namespace = "your-namespace"
+    namespace = var.consul_ns
   }
   depends_on = [
     helm_release.consul
