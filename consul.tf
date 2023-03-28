@@ -55,7 +55,7 @@ resource "kubernetes_config_map" "consul-dashboard" {
   }
 
   data = {
-    "consul-dashboard.yaml" = templatefile("${path.module}/assets/dashboards/consul-metrics.yaml", {
+    "consul-dashboard.json" = templatefile("${path.module}/assets/dashboards/consul-metrics.json", {
       DS_THANOS-MASTER = var.consul_dashboard_uid
     })
 
