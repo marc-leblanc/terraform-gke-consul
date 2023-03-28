@@ -19,8 +19,31 @@ resource "helm_release" "consul" {
   ]
 }
 
-resource "kubectl_manifest" "proxy_defaults" {
+data "kubernetes_service" "consul_ui" {
+  metadata {
+    name = "consul-ui"
+    # If the service is in a namespace other than "default", specify it here:
+    # namespace = "your-namespace"
+  }
+}
 
+output "consul_ui_url" {
+  value = (
+    data.kubernetes_service.consul_ui.spec.0.type == "ClusterIP" ?
+    "http://${data.kubernetes_service.consul_ui.spec.0.cluster_ip}:${data.kubernetes_service.consul_ui.spec.0.port.0.port}" :
+    data.kubernetes_service.consul_ui.spec.0.type == "LoadBalancer" ?
+    (
+      length(data.kubernetes_service.consul_ui.status.0.load_balancer.0.ingress.0.ip) > 0 ?
+      "http://${data.kubernetes_service.consul_ui.status.0.load_balancer.0.ingress.0.ip}:${data.kubernetes_service.consul_ui.spec.0.port.0.port}" :
+      "http://${data.kubernetes_service.consul_ui.status.0.load_balancer.0.ingress.0.hostname}:${data.kubernetes_service.consul_ui.spec.0.port.0.port}"
+    ) :
+    data.kubernetes_service.consul_ui.spec.0.type == "NodePort" ?
+    "http://${data.kubernetes_service.consul_ui.spec.0.cluster_ip}:${data.kubernetes_service.consul_ui.spec.0.port.0.node_port}" : ""
+  )
+}
+
+resource "kubectl_manifest" "proxy_defaults" {
+  count = var.meshgateway_toggle ? 1 : 0
 
   yaml_body = <<YAML
 
@@ -49,6 +72,8 @@ resource "kubernetes_namespace" "grafana" {
 
 
 resource "kubernetes_config_map" "consul-dashboard" {
+  count = var.grafana_enable ? 1 : 0
+
   metadata {
     name      = "consul-dashboard"
     namespace = var.grafana_ns
