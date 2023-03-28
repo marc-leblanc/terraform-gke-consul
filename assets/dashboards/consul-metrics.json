@@ -4620,7 +4620,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "Consul Mesh Metrics",
-  "uid": "zUb5Sya7z",
+  "uid": "${DS_THANOS-MASTER}",
   "version": 93,
   "weekStart": "",
   "gnetId": 15859
