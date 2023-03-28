@@ -21,7 +21,7 @@ resource "helm_release" "consul" {
 
 data "kubernetes_service" "consul_ui" {
   metadata {
-    name = "consul-ui"
+    name      = "consul-ui"
     namespace = var.consul_ns
   }
   depends_on = [
