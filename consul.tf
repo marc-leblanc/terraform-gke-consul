@@ -25,6 +25,9 @@ data "kubernetes_service" "consul_ui" {
     # If the service is in a namespace other than "default", specify it here:
     # namespace = "your-namespace"
   }
+  depends_on = [
+    helm_release.consul
+  ]
 }
 
 output "consul_ui_url" {
