@@ -6,7 +6,6 @@ from diagrams.k8s.infra import Node
 from diagrams.onprem.monitoring import Prometheus, Grafana
 
 with Diagram("Consul on GKE with Optional Prometheus and Grafana", show=False):
-
     with Cluster("GKE Cluster"):
         gke_master = GKE("Master")
         with Cluster("Worker Nodes"):
