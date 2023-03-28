@@ -27,10 +27,10 @@ No modules.
 | [helm_release.consul](https://registry.terraform.io/providers/hashicorp/helm/2.9.0/docs/resources/release) | resource |
 | [helm_release.grafana](https://registry.terraform.io/providers/hashicorp/helm/2.9.0/docs/resources/release) | resource |
 | [helm_release.prometheus](https://registry.terraform.io/providers/hashicorp/helm/2.9.0/docs/resources/release) | resource |
-| [kubectl_manifest.consul_dashboard](https://registry.terraform.io/providers/gavinbunney/kubectl/1.14.0/docs/resources/manifest) | resource |
 | [kubectl_manifest.proxy_defaults](https://registry.terraform.io/providers/gavinbunney/kubectl/1.14.0/docs/resources/manifest) | resource |
+| [kubernetes_config_map.consul-dashboard](https://registry.terraform.io/providers/hashicorp/kubernetes/2.18.1/docs/resources/config_map) | resource |
 | [kubernetes_namespace.grafana](https://registry.terraform.io/providers/hashicorp/kubernetes/2.18.1/docs/resources/namespace) | resource |
-| [kubernetes_service.consul_svc](https://registry.terraform.io/providers/hashicorp/kubernetes/2.18.1/docs/data-sources/service) | data source |
+| [kubernetes_service.consul_ui](https://registry.terraform.io/providers/hashicorp/kubernetes/2.18.1/docs/data-sources/service) | data source |
 
 ## Inputs
 
@@ -55,4 +55,6 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_consul_ui_url"></a> [consul\_ui\_url](#output\_consul\_ui\_url) | n/a |
