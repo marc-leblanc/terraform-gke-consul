@@ -1,6 +1,6 @@
 global:
   name: consul
-  image: "consul:1.16.0"
+  image: "hashicorp/consul:1.16.0"
   enabled: true
   datacenter: ${datacenter}
   federation:
