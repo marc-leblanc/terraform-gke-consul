@@ -32,6 +32,8 @@ connectInject:
   metrics:
     defaultEnabled: true # by default, this inherits from the value global.metrics.enabled
     defaultEnableMerging: false
+  apiGateway:
+    enabled: ${apigateway}
 syncCatalog:
   enabled: false
 controller:

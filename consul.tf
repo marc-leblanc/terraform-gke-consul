@@ -8,6 +8,7 @@ resource "helm_release" "consul" {
     templatefile("${path.module}/templates/consul-values.yaml", {
       datacenter               = var.consul_dc_name
       federation               = var.federation_toggle
+      apigateway               = var.apigateway_toggle
       meshgateway              = var.meshgateway_toggle
       replicas                 = var.consul_server_replicas
       manageSystemACLs         = var.consul_manage_acls
