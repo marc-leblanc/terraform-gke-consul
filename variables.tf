@@ -12,7 +12,7 @@ variable "federation_toggle" {
 }
 
 variable "apigateway_toggle" {
-  type = bool
+  type        = bool
   description = "Toggle Consul Inject API Gateway on/off"
 }
 variable "meshgateway_toggle" {
