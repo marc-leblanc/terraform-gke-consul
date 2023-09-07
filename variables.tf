@@ -11,6 +11,10 @@ variable "federation_toggle" {
   default     = false
 }
 
+variable "apigateway_toggle" {
+  type        = bool
+  description = "Toggle Consul Inject API Gateway on/off"
+}
 variable "meshgateway_toggle" {
   type        = bool
   description = "Toggle Consul Mesh gateway on/off"
@@ -80,7 +84,7 @@ variable "consul_prometheus_agent_enable" {
 
 variable "ingressgateway_toggle" {
   type        = bool
-  description = "Turn Ingress Gatways On/Off"
+  description = "Turn Ingress Gatways On/Off [DEPRECATED - use API Gateway instead]"
   default     = false
 }
 
