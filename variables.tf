@@ -11,10 +11,6 @@ variable "federation_toggle" {
   default     = false
 }
 
-variable "apigateway_toggle" {
-  type        = bool
-  description = "Toggle Consul Inject API Gateway on/off"
-}
 variable "meshgateway_toggle" {
   type        = bool
   description = "Toggle Consul Mesh gateway on/off"
@@ -80,19 +76,6 @@ variable "consul_prometheus_agent_enable" {
   default     = false
   description = "Enable Prometheus Agent metrics. This should be used for Demo/Non-Prod only"
   type        = bool
-}
-
-variable "ingressgateway_toggle" {
-  type        = bool
-  description = "Turn Ingress Gatways On/Off [DEPRECATED - use API Gateway instead]"
-  default     = false
-}
-
-variable "ingressgateway_svc" {
-  type        = string
-  description = "Default Ingress Gateway service type"
-  default     = "LoadBalancer"
-
 }
 
 variable "consul_dashboard_uid" {
