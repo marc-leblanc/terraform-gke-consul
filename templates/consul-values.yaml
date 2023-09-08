@@ -32,8 +32,6 @@ connectInject:
   metrics:
     defaultEnabled: true # by default, this inherits from the value global.metrics.enabled
     defaultEnableMerging: false
-  apiGateway:
-    enabled: ${apigateway}
 syncCatalog:
   enabled: false
 controller:
@@ -53,13 +51,3 @@ metrics:
   enableAgentMetrics: ${prometheus_agent_metrics}
   agentMetricsRetentionTime: 1m
   enableGatewayMetrics: true
-ingressGateways:
-  enabled: ${ingressgateways}
-  defaults:
-    replicas: 2
-    service:
-      type: ${ingressgateways_svc}
-      annotations: |
-        'prometheus.io/scrape': "true"
-        'prometheus.io/port': "20200"
-        'prometheus.io/path': "/metrics"
