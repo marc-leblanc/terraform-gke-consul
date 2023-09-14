@@ -28,16 +28,16 @@ server:
   acls:
     manageSystemACLs:  ${manageSystemACLs}
 connectInject:
+  transparentProxy:
+    defaultEnabled: true
   enabled: true
+  default: true
   metrics:
     defaultEnabled: true # by default, this inherits from the value global.metrics.enabled
     defaultEnableMerging: false
-apiGateway:
-  enabled: true
-  image: "hashicorp/consul-api-gateway:0.5.1"
-  managedGatewayClass:
-    serviceType: NodePort
-    useHostPorts: true
+  apiGateway:
+    managedGatewayClass:
+      serviceType: LoadBalancer
 syncCatalog:
   enabled: false
 controller:
